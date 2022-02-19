@@ -138,8 +138,6 @@ if __name__ == '__main__':
                         help='Path to the VeraCrypt binary')
     args = parser.parse_args()
 
-    print(isVeraRunning())
-    exit()
     # Get VeraCypt binary path
     if platform.system() == "Linux":
         veracryptPath = VeraLinuxPath
