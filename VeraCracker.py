@@ -169,6 +169,7 @@ if __name__ == '__main__':
         for p in progressbar(wordlist):
             if args.d:
                 print("[-] Trying %s" % p)
+
             if crack(p, veracryptPath):
                 print("[+] Password found! --> %s <--" % p)
                 printResults(startTime, tried)
