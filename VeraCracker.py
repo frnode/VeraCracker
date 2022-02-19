@@ -9,6 +9,7 @@
 
 # Imports
 import argparse
+import fileinput
 import os
 import platform
 import subprocess
@@ -17,10 +18,10 @@ import time
 from datetime import datetime
 
 # Constants
-VeraWinPath = '"c:\\Program Files\\VeraCrypt\\VeraCrypt.exe"'
+VeraWinPath = '"C:\\Program Files\\VeraCrypt\\VeraCrypt.exe"'
 VeraWinAttributes = ' /v "%s" /q /p "%s" /s /l %s'
 VeraWinProcList = "query process"
-VeraWinProcName = "veracrypt.exe"
+VeraWinProcName = "VeraCrypt.exe"
 VeraMacPath = '/Applications/VeraCrypt.app/Contents/MacOS/VeraCrypt'
 VeraLinuxPath = 'veracrypt'
 VeraLinuxAttributes = ' -t %s -p %s --non-interactive'
