@@ -15,6 +15,7 @@ import platform
 import subprocess
 import sys
 import time
+import psutil
 from datetime import datetime
 
 # Constants
@@ -30,7 +31,19 @@ VeraLinuxAttributes = ' -t %s -p %s --non-interactive'
 
 
 def isVeraRunning():
-    return True if ''.join(os.popen(VeraWinProcList).readlines()).find(VeraWinProcName) >= 0 else False
+    '''
+    Check if there is any running process that contains the given name processName.
+    '''
+    #Iterate over the all the running process
+    for proc in psutil.process_iter():
+        try:
+            # Check if process name contains the given name string.
+            if VeraWinProcName.lower() in proc.name().lower():
+                return True
+        except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
+            pass
+    return False;
+    # return True if ''.join(os.popen(VeraWinProcList).readlines()).find(VeraWinProcName) >= 0 else False
 
 
 def progressbar(it, prefix="Cracking ", size=50):
@@ -66,7 +79,7 @@ def windowsCrack(p, veracryptPath):
     os.popen(veracryptPath + VeraWinAttributes % (args.v, p, args.m))
     while True:
         if isVeraRunning():
-            time.sleep(0.1)
+            time.sleep(15)
         else:
             break
     try:
@@ -125,6 +138,8 @@ if __name__ == '__main__':
                         help='Path to the VeraCrypt binary')
     args = parser.parse_args()
 
+    print(isVeraRunning())
+    exit()
     # Get VeraCypt binary path
     if platform.system() == "Linux":
         veracryptPath = VeraLinuxPath
