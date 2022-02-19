@@ -79,7 +79,7 @@ def windowsCrack(p, veracryptPath):
     os.popen(veracryptPath + VeraWinAttributes % (args.v, p, args.m))
     while True:
         if isVeraRunning():
-            time.sleep(15)
+            time.sleep(0.1)
         else:
             break
     try:
