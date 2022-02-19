@@ -1,5 +1,3 @@
-> **Warning:** This repository is not maintained anymore
-
 # VeraCracker
 Veracrypt Password Cracker <br />
 This script will go through a list of passwords and try these against the specified volume. If succeeded, it will mount the partition. 
@@ -15,4 +13,5 @@ This software is licensed under the "Original BSD License".
 ```
   (C) 2015  NorthernSec          https://github.com/NorthernSec
   (c) 2015  Pieter-Jan Moreels   https://github.com/pidgeyl
+  (c) 2022  node                 https://github.com/frnode
 ```

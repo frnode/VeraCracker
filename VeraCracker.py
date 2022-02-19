@@ -5,6 +5,7 @@
 #
 # Copyright (c) 2015	NorthernSec
 # Copyright (c) 2015	Pieter-Jan Moreels
+# Copyright (c) 2022	frnode
 # This software is licensed under the Original BSD License
 
 # Imports
@@ -27,14 +28,12 @@ VeraMacPath = '/Applications/VeraCrypt.app/Contents/MacOS/VeraCrypt'
 VeraLinuxPath = 'veracrypt'
 VeraLinuxAttributes = ' -t %s -p %s --non-interactive'
 
+
 # Functions
 
 
 def isVeraRunning():
-    '''
-    Check if there is any running process that contains the given name processName.
-    '''
-    #Iterate over the all the running process
+    # Iterate over the all the running process
     for proc in psutil.process_iter():
         try:
             # Check if process name contains the given name string.
@@ -42,8 +41,7 @@ def isVeraRunning():
                 return True
         except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
             pass
-    return False;
-    # return True if ''.join(os.popen(VeraWinProcList).readlines()).find(VeraWinProcName) >= 0 else False
+    return False
 
 
 def progressbar(it, prefix="Cracking ", size=50):
@@ -55,6 +53,7 @@ def progressbar(it, prefix="Cracking ", size=50):
             sys.stdout.write("%s[%s%s] %i/%i\r" %
                              (prefix, "#" * x, " " * (size - x), _i, count))
             sys.stdout.flush()
+
     _show(0)
     for i, item in enumerate(it):
         yield item
